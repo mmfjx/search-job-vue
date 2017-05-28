@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "",
-    "dev": "webpack-dev-server --inline --hot --env.dev",
+    "dev": "webpack-dev-server --inline --hot --env.dev --progress --color",
     "build": "rimraf dist && webpack -p --progress --hide-modules"
   },
   "repository": {

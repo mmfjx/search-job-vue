@@ -9,7 +9,7 @@ const publicPath = '';
 
 module.exports = (options = {}) => ({
     entry: {
-        vendor: './src/vendor',
+        // vendor: './src/vendor',
         index: './src/main.js'
     },
     output: {
@@ -44,9 +44,9 @@ module.exports = (options = {}) => ({
         ]
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor', 'manifest']
-        }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     names: ['vendor', 'manifest']
+        // }),
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         })
@@ -73,4 +73,5 @@ module.exports = (options = {}) => ({
         }
     },
     devtool: options.dev ? '#eval-source-map' : '#source-map'
-})
+});
+
