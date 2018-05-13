@@ -4,7 +4,7 @@
   - npm run dev || yarn run dev
 
 # dev访问地址
-  http://localhost:8010/
+  http://localhost:8080/
 > A Vue.js project
 
 ## Build Setup
