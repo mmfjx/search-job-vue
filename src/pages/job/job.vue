@@ -4,6 +4,7 @@
     v-model="serch"
     cancel-text="取消"
     :show="true"
+    @click="queryJob"
     placeholder="搜索">
   </mt-search>
  </div>
@@ -21,6 +22,11 @@ export default {
         return {
             serch: ''
         };
+    },
+    methods: {
+      queryJob () {
+         return [];
+      }
     }
 };
 </script>
