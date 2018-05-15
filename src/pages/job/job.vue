@@ -6,8 +6,8 @@
         :show="true"
         @click="queryJob"
         placeholder="搜索">
+          <job-item></job-item>
       </mt-search>
-      <job-item></job-item>
   </div>
 </template>
 
