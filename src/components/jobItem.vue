@@ -4,16 +4,20 @@
             <img src="../assets/logo.png" alt="job-item">
         </div>
         <div class="job-detail">
-            <div class="info">
-                <p>测试经理</p>
-                <p>新浪科技</p>
+            <div class="left-side">
+                <div class="name">测试经理</div>
+                <div>
+                  <p>新浪科技</p>
                 <p>北京 | 5-10年 | 本科</p>
+                </div>
             </div>
-            <div class="salary">
+            <div class="right-side">
+              <div class="salary">
                 25K-40K
-            </div>
-            <div class="date">
-                05月03日
+              </div>
+              <div class="date">
+                  05月03日
+              </div>
             </div>
         </div>
     </div>
@@ -35,24 +39,33 @@ export default {
 
 <style lang="scss" scoped>
 .job-item {
+    height: 5rem;
+    border-bottom: 0.1rem solid #cccccc;
     display: flex;
     justify-content: center;
     .job-img {
         display: flex;
         flex: 1 1 auto;
+        justify-content: center;
+        align-items: center;
         img {
-            width: 100%;
-            height: 100%;
+            width: 80%;
+            height: 80%;
         }
     }
     .job-detail {
         display: flex;
-        flex: 3 1 auto;
-        justify-content: flex-start;
-        .info {
-
+        flex: 4 1 auto;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: space-between;
+        .left-side {
+          .name {
+            display: inline;
+            font-size: 0.8rem;
+          }
         }
-        .date {
+        .right-side {
 
         }
     }
