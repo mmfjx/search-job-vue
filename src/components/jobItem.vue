@@ -1,22 +1,20 @@
 <template>
     <div class="job-item">
         <div class="job-img">
-            <img src="../assets/logo.png" alt="job-item">
+            <img :src="jobInfo.firm.logo" alt="job-item">
         </div>
         <div class="job-detail">
             <div class="left-side">
-                <div class="name">测试经理</div>
-                <div>
-                  <p>新浪科技</p>
-                <p>北京 | 5-10年 | 本科</p>
-                </div>
+                <div class="name">{{jobInfo.jobName}}</div>
+                <div class="light-color">{{jobInfo.firm.name}}</div>
+                <div class="light-color">{{jobInfo.cityName | jobInfo.cityAddress | jobInfo.workYear}} | 5-10年 | 本科</div>
             </div>
             <div class="right-side">
               <div class="salary">
-                25K-40K
+                {{jobInfo.workWage}}K
               </div>
-              <div class="date">
-                  05月03日
+              <div class="date light-color">
+                  {{jobInfo.updateTime}}
               </div>
             </div>
         </div>
@@ -26,6 +24,14 @@
 <script>
 export default {
     name: 'job-item',
+    props: {
+        jobInfo: {
+            type: Object,
+            default: function () {
+                return {};
+            }
+        }
+    },
     data () {
         return {
 
@@ -39,8 +45,9 @@ export default {
 
 <style lang="scss" scoped>
 .job-item {
-    height: 5rem;
-    border-bottom: 0.1rem solid #cccccc;
+    height: 120px;
+    border-bottom: 1px solid #cccccc;
+    padding: 10px;
     display: flex;
     justify-content: center;
     .job-img {
@@ -49,24 +56,38 @@ export default {
         justify-content: center;
         align-items: center;
         img {
-            width: 80%;
-            height: 80%;
+            width: 100px;
+            height: 100px;
         }
     }
     .job-detail {
+        padding: 10px;
         display: flex;
         flex: 4 1 auto;
         flex-wrap: wrap;
         justify-content: space-between;
         align-content: space-between;
+        .light-color {
+            color: #666666;
+        }
         .left-side {
-          .name {
-            display: inline;
-            font-size: 0.8rem;
-          }
+            line-height: 34px;
+            text-align: left;
+            .name {
+                color: #000000;
+            }
         }
         .right-side {
-
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+            .salary {
+                color: orange;
+            }
+            .date {
+                font-size: 0.8rem;
+            }
         }
     }
 }
