@@ -6,13 +6,16 @@
         :show="true"
         @click="queryJob"
         placeholder="搜索">
-          <job-item></job-item>
+        <template v-for="(item, index) in jobList">
+            <job-item :key="index" :job-info="item"></job-item>
+        </template>
       </mt-search>
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
+import axios from 'axios';
 import { Search, Button } from 'mint-ui';
 import JobItem from '../../components/jobItem';
 
@@ -22,20 +25,34 @@ export default {
     name: 'job',
     data () {
         return {
-            serch: ''
+            serch: '',
+            jobList: []
         };
     },
     components: {
         JobItem
     },
+    mounted () {
+        this.queryJob();
+    },
     methods: {
-        queryJob () {
-            console.log('query');
+        async queryJob () {
+            let reqParams = {
+                url: '/api/recruit/select/similar',
+                method: 'get',
+                params: {
+                    size: 10
+                }
+            };
+            let res = await axios(reqParams);
+            if (res.status === 0) {
+                this.jobList = res.data || [];
+                console.log(this.jobList);
+            }
         }
     }
 };
 </script>
-
 <style>
 
 </style>
