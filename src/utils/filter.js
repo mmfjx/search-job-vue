@@ -1,4 +1,6 @@
 import Vue from 'vue';
-Vue.filter('dateFilter', function (value) {
-
+import moment from 'moment';
+Vue.filter('moment', function (value, formatString) {
+    formatString = formatString || 'YYYY-MM-DD';
+    return moment(value).format(formatString);
 });

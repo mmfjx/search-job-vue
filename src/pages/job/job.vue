@@ -6,9 +6,7 @@
         :show="true"
         @click="queryJob"
         placeholder="搜索">
-        <template v-for="(item, index) in jobList">
-            <job-item :key="index" :job-info="item"></job-item>
-        </template>
+        <job-item v-for="(item, index) in jobList" :key="index" :job-info="item"></job-item>
       </mt-search>
   </div>
 </template>
@@ -45,9 +43,8 @@ export default {
                 }
             };
             let res = await axios(reqParams);
-            if (res.status === 0) {
-                this.jobList = res.data || [];
-                console.log(this.jobList);
+            if (res.data.status === 0) {
+                this.jobList = res.data.data || [];
             }
         }
     }

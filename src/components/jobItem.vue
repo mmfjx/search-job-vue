@@ -7,14 +7,14 @@
             <div class="left-side">
                 <div class="name">{{jobInfo.jobName}}</div>
                 <div class="light-color">{{jobInfo.firm.name}}</div>
-                <div class="light-color">{{jobInfo.cityName | jobInfo.cityAddress | jobInfo.workYear}} | 5-10年 | 本科</div>
+                <div class="light-color">{{jobInfo.cityName + '|' + jobInfo.cityAddress + '|' + jobInfo.workYear}}</div>
             </div>
             <div class="right-side">
               <div class="salary">
                 {{jobInfo.workWage}}K
               </div>
               <div class="date light-color">
-                  {{jobInfo.updateTime}}
+                  {{jobInfo.updateTime | moment}}
               </div>
             </div>
         </div>
@@ -22,13 +22,16 @@
 </template>
 
 <script>
+import '../utils/filter.js';
 export default {
     name: 'job-item',
     props: {
         jobInfo: {
             type: Object,
             default: function () {
-                return {};
+                return {
+                    firm: {}
+                };
             }
         }
     },
@@ -56,8 +59,8 @@ export default {
         justify-content: center;
         align-items: center;
         img {
-            width: 100px;
-            height: 100px;
+            width: 70px;
+            height: 70px;
         }
     }
     .job-detail {
