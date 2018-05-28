@@ -1,18 +1,21 @@
 <template>
   <div>
-      <mt-button @click.native="handleClick">点击触发</mt-button>
+      <mt-button class="city" @click="$router.push({name: 'city'})" plain>{{$route.query.name || '北京'}}</mt-button>
       <mt-search
+        class=""
         v-model="serch"
         cancel-text="取消"
         :show="true"
         @click="queryJob"
         placeholder="搜索">
-        <div class="list-container"
+        <job-item v-for="(item, index) in jobList" :key="index" :job-info="item"></job-item>
+
+        <!-- <div class="list-container"
           v-infinite-scroll="loadMore"
           infinite-scroll-disabled="loading"
-          infinite-scroll-distance="10">
+          infinite-scroll-distance="20">
             <job-item v-for="(item, index) in jobList" :key="index" :job-info="item"></job-item>
-        </div>
+        </div> -->
       </mt-search>
   </div>
 </template>
@@ -66,6 +69,11 @@ export default {
 };
 </script>
 <style>
+.city {
+    float: left;
+    margin-top:7px;
+    z-index: 2;
+}
 .list-container {
     margin-top: 8px;
     margin-bottom: 40px;

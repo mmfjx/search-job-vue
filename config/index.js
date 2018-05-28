@@ -12,7 +12,9 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://47.100.210.195:8080',
+        // target: 'http://www.wuyushuo.com:8080',
+        // target: 'http://47.100.210.195',
+        target: 'http://hunt.wuyushuo.com',
         changeOrigin: true
       }
     },
