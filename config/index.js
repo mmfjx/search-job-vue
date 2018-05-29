@@ -57,7 +57,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: 'http://awps-assets.meituan.net/hfe/hotel-fe-msc/',
+    assetsPublicPath: 'http://wuyushou.com/',
 
     /**
      * Source Maps
