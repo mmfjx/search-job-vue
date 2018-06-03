@@ -4,7 +4,7 @@
             <router-link to="/" slot="left">
                 <mt-button icon="back"></mt-button>
             </router-link>
-        </mt-header>>
+        </mt-header>
         <mt-index-list class="text-align-left">
             <mt-index-section index="热门城市">
                 <template v-for="(city, index) in cityList.hottest">

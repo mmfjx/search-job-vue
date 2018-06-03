@@ -1,28 +1,36 @@
 <template>
-    <div class="job-item">
-        <div class="job-img">
-            <img :src="jobInfo.firm.logo" alt="job-item">
-        </div>
-        <div class="job-detail">
-            <div class="left-side">
-                <div class="name">{{jobInfo.jobName}}</div>
-                <div class="light-color">{{jobInfo.firm.name}}</div>
-                <div class="light-color">{{jobInfo.cityName + '|' + jobInfo.cityAddress + '|' + jobInfo.workYear}}</div>
+    <mt-cell
+    :to="'/job/detail/' + jobInfo.uuid"
+    is-link>
+        <div class="job-item" slot="title">
+            <div class="job-img">
+                <img :src="jobInfo.firm.logo" alt="job-item">
             </div>
-            <div class="right-side">
-              <div class="salary">
-                {{jobInfo.workWage}}K
-              </div>
-              <div class="date light-color">
-                  {{jobInfo.updateTime | moment}}
-              </div>
+            <div class="job-detail">
+                <div class="left-side">
+                    <div class="name">{{jobInfo.jobName}}</div>
+                    <div class="light-color">{{jobInfo.firm.name}}</div>
+                    <div class="light-color">{{jobInfo.cityName + '|' + jobInfo.cityAddress + '|' + jobInfo.workYear}}</div>
+                </div>
+                <div class="right-side">
+                <div class="salary">
+                    {{jobInfo.workWage}}K
+                </div>
+                <div class="date light-color">
+                    {{jobInfo.updateTime | moment}}
+                </div>
+                </div>
             </div>
         </div>
-    </div>
+    </mt-cell>
 </template>
 
 <script>
 import '../utils/filter.js';
+import Vue from 'vue';
+import { Cell } from 'mint-ui';
+Vue.component(Cell.name, Cell);
+
 export default {
     name: 'job-item',
     props: {
@@ -48,8 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 .job-item {
-    height: 100px;
-    border-bottom: 1px solid #cccccc;
+    height: 80px;
     display: flex;
     justify-content: center;
     .job-img {
@@ -73,7 +80,7 @@ export default {
             color: #666666;
         }
         .left-side {
-          display: flex;
+            display: flex;
             flex-direction: column;
             align-items: flex-start;
             justify-content: space-between;
