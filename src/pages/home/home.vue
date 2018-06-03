@@ -13,7 +13,7 @@
              <job></job>
           </mt-tab-container-item>
           <mt-tab-container-item id="wo">
-            wo
+              <wo></wo>
           </mt-tab-container-item>
         </mt-tab-container>
     </div>
@@ -23,6 +23,7 @@
 import Vue from 'vue';
 import { Tabbar, TabItem, TabContainer, TabContainerItem } from 'mint-ui';
 import Job from '../job/job';
+import Wo from '../wo/wo';
 
 Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
@@ -37,7 +38,8 @@ export default {
         };
     },
     components: {
-        Job
+        Job,
+        Wo
     }
 };
 </script>

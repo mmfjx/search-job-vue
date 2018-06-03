@@ -44,9 +44,10 @@
             </div>
             <div class="detail-content light-color small-font">
                 <span>岗位要求：</span>
-                <ul class="list-style">
+                <div>{{jobDetail.duties}}</div>
+                <!-- <ul class="list-style">
                     <li>岗位要求：</li>
-                </ul>
+                </ul> -->
             </div>
             <div class="detail-title">
                 <span class="hr-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -116,10 +117,6 @@ export default {
             if (res.data.status === 0) {
                 this.jobDetail = res.data.data || {};
             }
-        },
-        loadMore () {
-            this.loading = true;
-            this.queryJob(10);
         }
     },
     mounted () {
