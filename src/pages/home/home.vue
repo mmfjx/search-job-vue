@@ -1,5 +1,5 @@
 <template>
-    <div class="hello">
+    <div>
         <mt-tabbar v-model="selected" :fixed="true">
           <mt-tab-item id="job">
             <img slot="icon" src="../../assets/job.svg">

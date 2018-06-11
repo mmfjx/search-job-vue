@@ -13,7 +13,7 @@
             </mt-index-section>
             <template v-for="(city, index) in sortCity">
                 <mt-index-section :index="city.firstChar.toUpperCase()" :key="index">
-                    <mt-cell :title="city.name" is-link :to="'/?city=' + city.code" :key="index"></mt-cell>
+                    <mt-cell :title="city.name" is-link :to="'/?city=' + city.code + '&name=' + city.name" :key="index"></mt-cell>
                 </mt-index-section>
             </template>
         </mt-index-list>
