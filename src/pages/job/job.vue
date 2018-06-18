@@ -8,14 +8,10 @@
                     :show="true"
                     @click="queryJob"
                     placeholder="搜索"></search>
-                <condition :mask.sync="mask"></condition>
+                <condition :mask.sync="mask" @queryCondition="select"></condition>
         </div>
         <div class="content" >
-            <!-- <mt-popup
-            v-model="mask">
-            发布时间
-            </mt-popup> -->
-            <div :class="{mask: mask}"></div>
+            <!-- <div :class="{mask: mask}"></div> -->
             <job-item v-for="(item, index) in jobList" :key="index" :job-info="item"></job-item>
         </div>
 
@@ -60,6 +56,23 @@ export default {
         this.queryJob();
     },
     methods: {
+        async select (queryObj) {
+            let reqParams = {
+                url: '/api/recruit/select/list',
+                method: 'get',
+                params: {
+                    size: this.size,
+                    page: 1,
+                    ...queryObj,
+                    cityId: this.$route.query.cityId
+                }
+            };
+            let res = await axios(reqParams);
+            if (res.data.status === 0) {
+                this.jobList = res.data.data || [];
+                this.loading = false;
+            }
+        },
         async queryJob (addSize) {
             this.size = addSize ? this.size + addSize : this.size;
             let reqParams = {
@@ -105,17 +118,19 @@ export default {
     bottom: 0;
     left: 0;
     position: absolute;
+    padding-bottom: 35px;
 }
 .list-container {
     margin-top: 8px;
     margin-bottom: 40px;
 }
-.mask {
+/* .mask {
     position: fixed;
     width: 100%;
     z-index: 1;
     height: 100%;
     opacity: 0.5;
+    padding-bottom: 35px;
     background: #000;
-}
+} */
 </style>
